@@ -1,6 +1,6 @@
 import passport from "passport"
 import local from "passport-local"
-import { createHash, isValidPassword } from "../utis.js"
+import { createHash, isValidPassword } from "../utils.js"
 import { users } from "../dao/factory.js"
 
 const Strategy = local.Strategy

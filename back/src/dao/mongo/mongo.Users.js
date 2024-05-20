@@ -1,5 +1,5 @@
 import userModel from "./models/userModel.js";
-
+import messagesModel from "./models/messagesModel.js"
 class users{
     constructor(){
 
@@ -28,7 +28,17 @@ class users{
         return result
     }
 
+    createMessage = async(message) => {
+        let result = await messagesModel.create(message)
+        return result
+    }
 
+    mostrarMensajes = async() => {
+
+        let result = await messagesModel.find()
+
+        return result
+    }
 }
 
 export default new users()

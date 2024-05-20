@@ -8,6 +8,7 @@ class routeUsers extends RouterMain{
         this.post('/', passport.authenticate('registrarse', { 
             failureRedirect: '/failRegister' 
         }));
+        
         this.post('/Login', passport.authenticate('login'), (req, res) => {
             try{
                 req.session.user = {
@@ -17,7 +18,6 @@ class routeUsers extends RouterMain{
                     role: req.user.role
                 };
                 res.json({succes: req.session.user})
-
             }catch{
                 res.send("No se logro")
             }
@@ -26,12 +26,8 @@ class routeUsers extends RouterMain{
 
 
     async traerUsuarios(req,res){
-        console.log(await req.session);
-        console.log(await req.session.cookie);
-        console.log(await req.session.passport);
-        console.log(await req.session.user);
-        return res.json({payload: await req.session});
-
+        const nombreUsuario = req.session.user.first_name;
+        res.send(`Hola, ${nombreUsuario}!`);
     }
 
 }
